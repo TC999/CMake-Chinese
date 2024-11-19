@@ -46,7 +46,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="SourceLabel">
        <property name="text">
-        <string>Where is the source code:</string>
+        <string>源代码文件夹：</string>
        </property>
       </widget>
      </item>
@@ -56,14 +56,14 @@
      <item row="0" column="2">
       <widget class="QPushButton" name="BrowseSourceDirectoryButton">
        <property name="text">
-        <string>Browse &amp;Source...</string>
+        <string>选择 &amp;源...</string>
        </property>
       </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="PresetLabel">
        <property name="text">
-        <string>Preset:</string>
+        <string>预设:</string>
        </property>
       </widget>
      </item>
@@ -77,7 +77,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="BinaryLabel">
        <property name="text">
-        <string>Where to build the binaries:</string>
+        <string>二进制文件夹：</string>
        </property>
       </widget>
      </item>
@@ -97,7 +97,7 @@
      <item row="2" column="2">
       <widget class="QPushButton" name="BrowseBinaryDirectoryButton">
        <property name="text">
-        <string>Browse &amp;Build...</string>
+        <string>选择 &amp;编译...</string>
        </property>
       </widget>
      </item>
@@ -157,7 +157,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>S&amp;earch:</string>
+            <string>&amp;搜索:</string>
            </property>
            <property name="buddy">
             <cstring>Search</cstring>
@@ -193,24 +193,24 @@
          <item>
           <widget class="QCheckBox" name="groupedCheck">
            <property name="text">
-            <string>Grouped</string>
+            <string>分组</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="advancedCheck">
            <property name="text">
-            <string>Advanced</string>
+            <string>高级</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="AddEntry">
            <property name="toolTip">
-            <string>Add New Entry</string>
+            <string>添加新入口</string>
            </property>
            <property name="text">
-            <string>&amp;Add Entry</string>
+            <string>&amp;添加入口</string>
            </property>
            <property name="icon">
             <iconset theme="list-add" resource="CMakeSetup.qrc">
@@ -221,10 +221,10 @@
          <item>
           <widget class="QPushButton" name="RemoveEntry">
            <property name="toolTip">
-            <string>Remove Selected Entries</string>
+            <string>移除已选入口</string>
            </property>
            <property name="text">
-            <string>&amp;Remove Entry</string>
+            <string>&amp;移除入口</string>
            </property>
            <property name="icon">
             <iconset theme="list-remove" resource="CMakeSetup.qrc">
@@ -235,7 +235,7 @@
          <item>
           <widget class="QPushButton" name="Environment">
            <property name="text">
-            <string>E&amp;nvironment...</string>
+            <string>&amp;环境...</string>
            </property>
           </widget>
          </item>
@@ -257,7 +257,7 @@
        <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Press Configure to update and display new values in red, then press Generate to generate selected build files.</string>
+          <string>按下 “配置 ”更新并以红色显示新值，然后按下 “生成 ”生成所选的构建文件。</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -287,28 +287,28 @@
          <item>
           <widget class="QPushButton" name="ConfigureButton">
            <property name="text">
-            <string>&amp;Configure</string>
+            <string>&amp;配置</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="GenerateButton">
            <property name="text">
-            <string>&amp;Generate</string>
+            <string>&amp;生成</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="OpenProjectButton">
            <property name="text">
-            <string>Open &amp;Project</string>
+            <string>打开 &amp;项目</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QLabel" name="Generator">
            <property name="text">
-            <string>Current Generator:</string>
+            <string>当前生成器</string>
            </property>
           </widget>
          </item>

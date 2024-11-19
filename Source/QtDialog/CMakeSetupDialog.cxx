@@ -127,28 +127,28 @@ CMakeSetupDialog::CMakeSetupDialog()
   this->advancedCheck->setCheckState(advancedView ? Qt::Checked
                                                   : Qt::Unchecked);
 
-  QMenu* FileMenu = this->menuBar()->addMenu(tr("&File"));
-  this->ReloadCacheAction = FileMenu->addAction(tr("&Reload Cache"));
+  QMenu* FileMenu = this->menuBar()->addMenu(tr("&文件"));
+  this->ReloadCacheAction = FileMenu->addAction(tr("&重载缓存"));
   QObject::connect(this->ReloadCacheAction, &QAction::triggered, this,
                    &CMakeSetupDialog::doReloadCache);
-  this->DeleteCacheAction = FileMenu->addAction(tr("&Delete Cache"));
+  this->DeleteCacheAction = FileMenu->addAction(tr("&删除缓存"));
   QObject::connect(this->DeleteCacheAction, &QAction::triggered, this,
                    &CMakeSetupDialog::doDeleteCache);
-  this->ExitAction = FileMenu->addAction(tr("E&xit"));
+  this->ExitAction = FileMenu->addAction(tr("&退出"));
   QObject::connect(this->ExitAction, &QAction::triggered, this,
                    &CMakeSetupDialog::close);
   this->ExitAction->setShortcut(QKeySequence::Quit);
 
-  QMenu* ToolsMenu = this->menuBar()->addMenu(tr("&Tools"));
-  this->ConfigureAction = ToolsMenu->addAction(tr("&Configure"));
+  QMenu* ToolsMenu = this->menuBar()->addMenu(tr("&工具"));
+  this->ConfigureAction = ToolsMenu->addAction(tr("&配置"));
   QObject::connect(this->ConfigureAction, &QAction::triggered, this,
                    &CMakeSetupDialog::doConfigure);
   // prevent merging with Preferences menu item on macOS
   this->ConfigureAction->setMenuRole(QAction::NoRole);
-  this->GenerateAction = ToolsMenu->addAction(tr("&Generate"));
+  this->GenerateAction = ToolsMenu->addAction(tr("&生成"));
   QObject::connect(this->GenerateAction, &QAction::triggered, this,
                    &CMakeSetupDialog::doGenerate);
-  auto* a = ToolsMenu->addAction(tr("&Show My Changes"));
+  auto* a = ToolsMenu->addAction(tr("&显示更改"));
   QObject::connect(a, &QAction::triggered, this,
                    &CMakeSetupDialog::showUserChanges);
 #if defined(Q_WS_MAC) || defined(Q_OS_MAC)
@@ -187,35 +187,35 @@ CMakeSetupDialog::CMakeSetupDialog()
   QObject::connect(s, &QShortcut::activated, this,
                    &CMakeSetupDialog::doOutputErrorNext); // in Eclipse
 
-  QMenu* OptionsMenu = this->menuBar()->addMenu(tr("&Options"));
-  a = OptionsMenu->addAction(tr("Warning Messages..."));
+  QMenu* OptionsMenu = this->menuBar()->addMenu(tr("&选项"));
+  a = OptionsMenu->addAction(tr("警告消息..."));
   QObject::connect(a, &QAction::triggered, this,
                    &CMakeSetupDialog::doWarningMessagesDialog);
   this->WarnUninitializedAction =
     OptionsMenu->addAction(tr("&Warn Uninitialized (--warn-uninitialized)"));
   this->WarnUninitializedAction->setCheckable(true);
 
-  QAction* debugAction = OptionsMenu->addAction(tr("&Debug Output"));
+  QAction* debugAction = OptionsMenu->addAction(tr("&调试输出"));
   debugAction->setCheckable(true);
   QObject::connect(debugAction, &QAction::toggled, this,
                    &CMakeSetupDialog::setDebugOutput);
 
   OptionsMenu->addSeparator();
-  a = OptionsMenu->addAction(tr("&Expand Grouped Entries"));
+  a = OptionsMenu->addAction(tr("&展开分组条目"));
   QObject::connect(a, &QAction::triggered, this->CacheValues,
                    &QCMakeCacheView::expandAll);
-  a = OptionsMenu->addAction(tr("&Collapse Grouped Entries"));
+  a = OptionsMenu->addAction(tr("&收起分组条目"));
   QObject::connect(a, &QAction::triggered, this->CacheValues,
                    &QCMakeCacheView::collapseAll);
 
-  QMenu* HelpMenu = this->menuBar()->addMenu(tr("&Help"));
-  a = HelpMenu->addAction(tr("Help"));
+  QMenu* HelpMenu = this->menuBar()->addMenu(tr("&帮助"));
+  a = HelpMenu->addAction(tr("帮助"));
   QObject::connect(a, &QAction::triggered, this, &CMakeSetupDialog::doHelp);
   a->setShortcut(QKeySequence::HelpContents);
-  a = HelpMenu->addAction(tr("CMake Reference Manual"));
+  a = HelpMenu->addAction(tr("CMake 参考手册"));
   QObject::connect(a, &QAction::triggered, this,
                    [] { OpenReferenceManual("index.html"); });
-  a = HelpMenu->addAction(tr("About"));
+  a = HelpMenu->addAction(tr("关于"));
   QObject::connect(a, &QAction::triggered, this, &CMakeSetupDialog::doAbout);
 
   this->setAcceptDrops(true);
@@ -757,8 +757,8 @@ void CMakeSetupDialog::showPresetLoadError(const QString& dir,
                                            const QString& message)
 {
   QMessageBox::warning(
-    this, "Error Reading CMake Presets",
-    QString("Could not read presets from %1: %2").arg(dir, message));
+    this, "读取 CMake 预设出错",
+    QString("无法读取配置从 %1: %2").arg(dir, message));
 }
 
 void CMakeSetupDialog::doBinaryBrowse()
@@ -771,7 +771,7 @@ void CMakeSetupDialog::doBinaryBrowse()
     abs_path = this->SourceDirectory->text() + abs_path;
   }
   QString dir = QFileDialog::getExistingDirectory(
-    this, tr("Enter Path to Build"), abs_path,
+    this, tr("键入路径以编译"), abs_path,
     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
   if (!dir.isEmpty() && dir != this->BinaryDirectory->currentText()) {
     this->setBinaryDirectory(dir);
@@ -918,34 +918,34 @@ bool CMakeSetupDialog::setupFirstConfigure()
       QString fortranCompiler = dialog.getFortranCompiler();
       if (!fortranCompiler.isEmpty()) {
         m->insertProperty(QCMakeProperty::FILEPATH, "CMAKE_Fortran_COMPILER",
-                          "Fortran compiler.", fortranCompiler, false);
+                          "Fortran 编译器.", fortranCompiler, false);
       }
       QString cxxCompiler = dialog.getCXXCompiler();
       if (!cxxCompiler.isEmpty()) {
         m->insertProperty(QCMakeProperty::FILEPATH, "CMAKE_CXX_COMPILER",
-                          "CXX compiler.", cxxCompiler, false);
+                          "CXX 编译器.", cxxCompiler, false);
       }
 
       QString cCompiler = dialog.getCCompiler();
       if (!cCompiler.isEmpty()) {
         m->insertProperty(QCMakeProperty::FILEPATH, "CMAKE_C_COMPILER",
-                          "C compiler.", cCompiler, false);
+                          "C 编译器.", cCompiler, false);
       }
     } else if (dialog.crossCompilerSetup()) {
       QString fortranCompiler = dialog.getFortranCompiler();
       if (!fortranCompiler.isEmpty()) {
         m->insertProperty(QCMakeProperty::FILEPATH, "CMAKE_Fortran_COMPILER",
-                          "Fortran compiler.", fortranCompiler, false);
+                          "Fortran 编译器.", fortranCompiler, false);
       }
 
       QString mode = dialog.getCrossIncludeMode();
       m->insertProperty(QCMakeProperty::STRING,
                         "CMAKE_FIND_ROOT_PATH_MODE_INCLUDE",
-                        tr("CMake Find Include Mode"), mode, false);
+                        tr("CMake 查找包含模式"), mode, false);
       mode = dialog.getCrossLibraryMode();
       m->insertProperty(QCMakeProperty::STRING,
                         "CMAKE_FIND_ROOT_PATH_MODE_LIBRARY",
-                        tr("CMake Find Library Mode"), mode, false);
+                        tr("CMake 查找库模式"), mode, false);
       mode = dialog.getCrossProgramMode();
       m->insertProperty(QCMakeProperty::STRING,
                         "CMAKE_FIND_ROOT_PATH_MODE_PROGRAM",
@@ -967,17 +967,17 @@ bool CMakeSetupDialog::setupFirstConfigure()
       QString cxxCompiler = dialog.getCXXCompiler();
       if (!cxxCompiler.isEmpty()) {
         m->insertProperty(QCMakeProperty::FILEPATH, "CMAKE_CXX_COMPILER",
-                          tr("CXX compiler."), cxxCompiler, false);
+                          tr("CXX 编译器."), cxxCompiler, false);
       }
       QString cCompiler = dialog.getCCompiler();
       if (!cCompiler.isEmpty()) {
         m->insertProperty(QCMakeProperty::FILEPATH, "CMAKE_C_COMPILER",
-                          tr("C compiler."), cCompiler, false);
+                          tr("C 编译器."), cCompiler, false);
       }
     } else if (dialog.crossCompilerToolChainFile()) {
       QString toolchainFile = dialog.getCrossCompilerToolChainFile();
       m->insertProperty(QCMakeProperty::FILEPATH, "CMAKE_TOOLCHAIN_FILE",
-                        tr("Cross Compile ToolChain File"), toolchainFile,
+                        tr("交叉编译工具链文件"), toolchainFile,
                         false);
     }
     return true;
