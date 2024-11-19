@@ -1,90 +1,87 @@
 CMake
 *****
 
-Introduction
+介绍
 ============
 
-CMake is a cross-platform, open-source build system generator.
-For full documentation visit the `CMake Home Page`_ and the
-`CMake Documentation Page`_. The `CMake Community Wiki`_ also
-references useful guides and recipes.
+CMake 是一个跨平台的开源构建系统生成器。
+完整文档请访问 `CMake 首页`_ 和 `CMake 文档页面`_。`CMake 社区维基`_ 也提供了有用的指南和配方。
 
-.. _`CMake Home Page`: https://cmake.org
-.. _`CMake Documentation Page`: https://cmake.org/documentation
-.. _`CMake Community Wiki`: https://gitlab.kitware.com/cmake/community/-/wikis/home
+.. _`CMake 首页`: https://cmake.org 
+.. _`CMake 文档页面`: https://cmake.org/documentation 
+.. _`CMake 社区维基`: https://gitlab.kitware.com/cmake/community/-/wikis/home 
 
-CMake is maintained and supported by `Kitware`_ and developed in
-collaboration with a productive community of contributors.
+CMake 由 `Kitware`_ 维护和支持，并与一群富有成效的贡献者社区合作开发。
 
-.. _`Kitware`: https://www.kitware.com/cmake
+.. _`Kitware`: https://www.kitware.com/cmake 
 
-License
+许可证
 =======
 
-CMake is distributed under the OSI-approved BSD 3-clause License.
-See `Copyright.txt`_ for details.
+CMake 在 OSI 批准的 BSD 3-条款许可证下发布。
+详情请参阅 `Copyright.txt`_。
 
 .. _`Copyright.txt`: Copyright.txt
 
-Building CMake
+构建 CMake
 ==============
 
-Supported Platforms
+支持的平台
 -------------------
 
-* Microsoft Windows
-* Apple macOS
+* 微软 Windows
+* 苹果 macOS
 * Linux
 * FreeBSD
 * OpenBSD
 * Solaris
 * AIX
 
-Other UNIX-like operating systems may work too out of the box, if not
-it should not be a major problem to port CMake to this platform.
-Please post to the `CMake Discourse Forum`_ to ask if others have
-had experience with the platform.
+其他类 UNIX 操作系统也可能直接支持，如果不可以
+移植 CMake 到该平台也不应该是一个大问题。
+请在 `CMake 论坛`_ 发帖询问其他人是否有
+关于该平台的经验。
 
-.. _`CMake Discourse Forum`: https://discourse.cmake.org
+.. _`CMake 论坛`: https://discourse.cmake.org 
 
-Building CMake with CMake
+使用 CMake 构建 CMake
 -------------------------
 
-You can build CMake as any other project with a CMake-based build system:
-run an already-installed CMake on this source tree with your preferred
-generator and options.  Then build it and install it.
+你可以像构建任何其他基于 CMake 的项目一样构建 CMake：
+使用已安装的 CMake 在这个源代码树上运行，使用您喜欢的
+生成器和选项。然后构建并安装它。
 
-To build the documentation, install `Sphinx`_ and configure CMake with
-``-DSPHINX_HTML=ON`` and/or ``-DSPHINX_MAN=ON`` to enable the "html" or
-"man" builder.  Add ``-DSPHINX_EXECUTABLE=/path/to/sphinx-build`` if the
-tool is not found automatically.
+要构建文档，请安装 `Sphinx`_ 并使用
+``-DSPHINX_HTML=ON`` 和/或 ``-DSPHINX_MAN=ON`` 配置 CMake 以启用 "html" 或
+"man" 构建器。如果工具未自动找到，添加 ``-DSPHINX_EXECUTABLE=/path/to/sphinx-build``。
 
-To run the test suite, run ``ctest`` in the CMake build directory after
-building.  See the `CMake Testing Guide`_ for details.
+构建完成后，在 CMake 构建目录中运行 ``ctest`` 来运行测试套件。
+详情请参阅 `CMake 测试指南`_。
 
-.. _`Sphinx`: https://sphinx-doc.org
-.. _`CMake Testing Guide`: Help/dev/testing.rst
+.. _`Sphinx`: https://sphinx-doc.org 
+.. _`CMake 测试指南`: Help/dev/testing.rst
 
-Building CMake from Scratch
+从零开始构建 CMake
 ---------------------------
+
 
 UNIX/Mac OSX/MinGW/MSYS/Cygwin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You need to have a C++ compiler (supporting C++11) and a ``make`` installed.
-Run the ``bootstrap`` script you find in the source directory of CMake.
-You can use the ``--help`` option to see the supported options.
-You may use the ``--prefix=<install_prefix>`` option to specify a custom
-installation directory for CMake.  Once this has finished successfully,
-run ``make`` and ``make install``.
+您需要有一个支持 C++11 的 C++ 编译器和 ``make`` 安装。
+在 CMake 的源代码目录中运行 ``bootstrap`` 脚本。
+您可以使用 ``--help`` 选项查看支持的选项。
+您可以使用 ``--prefix=<install_prefix>`` 选项指定 CMake 的自定义
+安装目录。成功完成后，
+运行 ``make`` 和 ``make install``。
 
-For example, if you simply want to build and install CMake from source,
-you can build directly in the source tree::
+例如，如果您只想从源代码构建并安装 CMake，
+可以直接在源代码树中构建::
 
   $ ./bootstrap && make && sudo make install
 
-Or, if you plan to develop CMake or otherwise run the test suite, create
-a separate build tree::
+或者，如果您计划开发 CMake 或以其他方式运行测试套件，请创建
+一个单独的构建树::
 
   $ mkdir build && cd build
   $ ../bootstrap && make
@@ -92,42 +89,42 @@ a separate build tree::
 Windows
 ^^^^^^^
 
-There are two ways for building CMake under Windows:
+在 Windows 下构建 CMake 有两种方式：
 
-1. Compile with MSVC from VS 2015 or later.
-   You need to download and install a binary release of CMake.  You can get
-   these releases from the `CMake Download Page`_.  Then proceed with the
-   instructions above for `Building CMake with CMake`_.
+1. 使用 VS 2015 或更高版本的 MSVC 编译。
+   您需要下载并安装 CMake 的二进制版本。您可以从
+   `CMake 下载页面`_ 获取这些版本。然后按照上述
+   `使用 CMake 构建 CMake`_ 的说明进行。
 
-2. Bootstrap with MinGW under MSYS2.
-   Download and install `MSYS2`_.  Then install the required build tools::
+2. 在 MSYS2 下使用 MinGW 自举。
+   下载并安装 `MSYS2`_。然后安装所需的构建工具::
 
      $ pacman -S --needed git base-devel mingw-w64-x86_64-gcc
 
-   and bootstrap as above.
+   如上所述自举。
 
-.. _`CMake Download Page`: https://cmake.org/download
-.. _`MSYS2`: https://www.msys2.org/
+.. _`CMake 下载页面`: https://cmake.org/download 
+.. _`MSYS2`: https://www.msys2.org/ 
 
-Reporting Bugs
+报告错误
 ==============
 
-If you have found a bug:
+如果您发现了一个错误：
 
-1. If you have a patch, please read the `CONTRIBUTING.rst`_ document.
+1. 如果您有一个补丁，请阅读 `CONTRIBUTING.rst`_ 文档。
 
-2. Otherwise, please post to the `CMake Discourse Forum`_ and ask about
-   the expected and observed behaviors to determine if it is really
-   a bug.
+2. 否则，请在 `CMake 论坛`_ 发帖询问
+   预期和观察到的行为，以确定它是否真的
+   是一个错误。
 
-3. Finally, if the issue is not resolved by the above steps, open
-   an entry in the `CMake Issue Tracker`_.
+3. 最后，如果上述步骤无法解决问题，请在 `CMake 问题跟踪器`_ 中
+   打开一个条目。
 
-.. _`CMake Issue Tracker`: https://gitlab.kitware.com/cmake/cmake/-/issues
+.. _`CMake 问题跟踪器`: https://gitlab.kitware.com/cmake/cmake/-/issues 
 
-Contributing
+贡献
 ============
 
-See `CONTRIBUTING.rst`_ for instructions to contribute.
+请参阅 `CONTRIBUTING.rst`_ 了解如何贡献。
 
 .. _`CONTRIBUTING.rst`: CONTRIBUTING.rst
